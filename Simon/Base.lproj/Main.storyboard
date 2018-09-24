@@ -71,6 +71,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="colorsFrame" destination="qyh-C4-kcZ" id="eZv-sH-f0D"/>
+                        <outlet property="messageLabel" destination="MAb-ui-tz2" id="NsN-L0-CLd"/>
+                        <outlet property="startButton" destination="0dH-AI-YzZ" id="Xkk-Gp-Yax"/>
                         <outletCollection property="colorDisplays" destination="1Th-ro-Uwx" collectionClass="NSMutableArray" id="1V3-5h-UjD"/>
                         <outletCollection property="colorDisplays" destination="OHm-0r-sfP" collectionClass="NSMutableArray" id="iQr-Be-xeD"/>
                         <outletCollection property="colorDisplays" destination="zq8-DI-RKf" collectionClass="NSMutableArray" id="0Eo-rF-gfg"/>

@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     
     @IBOutlet var colorDisplays: [UIView]!
-    
+    @IBOutlet weak var colorsFrame: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     
     override func viewDidLoad() {
