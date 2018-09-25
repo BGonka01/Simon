@@ -58,6 +58,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.97623564617042402" green="1" blue="0.95930361363065597" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onStartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mhZ-AY-cHI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAb-ui-tz2">
                                 <rect key="frame" x="172" y="536" width="42" height="21"/>
@@ -81,6 +84,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hwr-sn-xa8">
+                    <connections>
+                        <action selector="onColorTapped:" destination="BYZ-38-t0r" id="Hu8-Na-Yaj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="386" y="117"/>
         </scene>
