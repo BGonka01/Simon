@@ -9,21 +9,21 @@
 import UIKit
 import AVFoundation
 
-var sound: AVAudioPlayer?
-var timer = Timer()
-var pattern = [Int]()
-var index = 0
-var playerTurn = false
-var gameOver = true
+
 
 class ViewController: UIViewController {
-
     
     @IBOutlet var colorDisplays: [UIView]!
     @IBOutlet weak var colorsFrame: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
+    var sound: AVAudioPlayer?
+    var timer = Timer()
+    var pattern = [Int]()
+    var index = 0
+    var playerTurn = false
+    var gameOver = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,20 @@ class ViewController: UIViewController {
     @IBAction func onColorTapped(_ sender: UITapGestureRecognizer) {
     }
     
-
+    func playSound(fileName: String){
+        if let path = Bundle.main.path(forResource: fileName, ofType: "wav"){
+            let url = URL(fileURLWithPath: path)
+            do {
+                self.sound = try AVAudioPlayer(contentsOf: url)
+                self.sound?.play()
+            }
+            catch {
+                print("can't find file")
+            }
+        }
+        
+    }
+    
 
 }
 
