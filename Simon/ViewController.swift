@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
+
+var sound: AVAudioPlayer?
+var timer = Timer()
+var pattern = [Int]()
+var index = 0
+var playerTurn = false
+var gameOver = true
 
 class ViewController: UIViewController {
 
@@ -23,8 +31,22 @@ class ViewController: UIViewController {
         
         
     }
-
+    @IBAction func onStartButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func onColorTapped(_ sender: UITapGestureRecognizer) {
+    }
+    
 
 
 }
+
+
+
+
+
+
+
+
+
 
