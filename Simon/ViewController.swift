@@ -27,13 +27,45 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      playSound(fileName: "Start")
         view.backgroundColor = .red
+        
     }
     
     @IBAction func onStartButtonTapped(_ sender: Any) {
+        if gameOver {
+            restart()
+            displayPattern()
+            gameOver = false
+            startButton.alpha = 0.0
+            messageLabel.text = ""
+        }
+        
     }
     
     @IBAction func onColorTapped(_ sender: UITapGestureRecognizer) {
+        for number in 0..<colorDisplays.count{
+            if colorDisplays[number].frame.contains(sender.location(in: colorsFrame)) {
+                flashColor(number: number)
+                index += 1
+                if index == pattern.count {
+                    index = 0
+                    playerTurn = false
+                    messageLabel.text = ""
+                    addToPattern()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        self.displayPattern()
+                    }
+                }
+            }
+            else {
+                messageLabel.text = "Game Over"
+                gameOver = true
+                playSound(fileName: "lose")
+                restart()
+            }
+            
+        }
     }
     
     func playSound(fileName: String){
@@ -70,6 +102,27 @@ class ViewController: UIViewController {
                                 self.colorDisplays[number].alpha = 0.4
             }, completion: nil)
         }
+    }
+    func displayPattern() {
+         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(ViewController.nextColor)), userInfo: nil, repeats: true)
+    }
+        @objc func nextColor() {
+            if index < pattern.count {
+                flashColor(number: pattern[index])
+                index += 1
+            }
+            else {
+            timer.invalidate()
+            index = 0
+            playerTurn = true
+            messageLabel.text = "Your turn"
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -82,5 +135,3 @@ class ViewController: UIViewController {
 
 
 
-
-}
