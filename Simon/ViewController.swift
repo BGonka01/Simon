@@ -28,8 +28,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        
-        
     }
     
     @IBAction func onStartButtonTapped(_ sender: Any) {
@@ -49,12 +47,29 @@ class ViewController: UIViewController {
                 print("can't find file")
             }
         }
-        
     }
+    
     func addToPattern() {
         pattern.append(Int(arc4random_uniform(4)))
     }
-
+    
+    func restart() {
+        pattern.removeAll()
+        index = 0
+        addToPattern()
+        startButton.alpha = 1.0
+    }
+    
+    func flashColor(number: Int) {
+        self.playSound(fileName: String(number))
+        UIView.transition(with: colorDisplays[number], duration: 0.2,   options: .transitionCrossDissolve, animations: {
+            self.colorDisplays[number].alpha = 1.0
+        }) { (true) in
+            UIView.transition(with: self.colorDisplays[number], duration: 0.2,
+                              options: .transitionCrossDissolve, animations: {
+                                self.colorDisplays[number].alpha = 0.4
+            }, completion: nil)
+        }
 }
 
 
@@ -66,3 +81,6 @@ class ViewController: UIViewController {
 
 
 
+
+
+}
